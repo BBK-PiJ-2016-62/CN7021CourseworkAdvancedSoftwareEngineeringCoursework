@@ -23,6 +23,10 @@ public class One710261947ReadWriteTextFiles {
         ArrayList<Contact> contactArrayList=ConstructContactListFromRecord(firstList);
         System.out.println(contactArrayList.get(2).getName());
         System.out.println(contactArrayList.size());
+        for (Contact c: contactArrayList)
+        {
+            System.out.println(c.getIndex()+" "+c.getName()+" "+c.getEmail()+" "+c.getDescription());
+        }
 
         Path path1 = Paths.get(//"/animals/gorilla.txt");
                 /*"E:\\UEL2017_18\\CN7021AdvancedSoftwareEngineering\\CN7021CourseworkAdvancedSoftwareEngineeringCoursework\\src" +
@@ -44,23 +48,20 @@ public class One710261947ReadWriteTextFiles {
         firstList.add(s);
     }
     static ArrayList<Contact> contactList=new ArrayList<>();
+
     static ArrayList<Contact> ConstructContactListFromRecord(ArrayList<String> firstList) {
         ArrayList<Contact> contactArrayList = new ArrayList<>();
         Contact contact = new Contact();
-        for (int i = 0; i < firstList.size(); i++) {
-            if (i % 5 == 0) {contact.setIndex(firstList.get(i));
-            System.out.println(firstList.get(i));}
-            if (i % 5 == 1) {contact.setName(firstList.get(i));
-            System.out.println(firstList.get(i));}
-            if (i % 5 == 2) {contact.setTel(firstList.get(i));
-            System.out.println(firstList.get(i));}
-            if (i % 5 == 3) {contact.setEmail(firstList.get(i));
-            System.out.println(firstList.get(i));}
-            if (i % 5 == 4) {
-                contact.setDescription(firstList.get(i));
-                System.out.println(firstList.get(i));}
-                contactArrayList.add(contact);
-            }
+        int i=0;
+        while(i<firstList.size()){
+            if (i % 5 == 0) contact.setIndex(firstList.get(i));
+            if (i % 5 == 1) contact.setName(firstList.get(i));
+            if (i % 5 == 2) contact.setTel(firstList.get(i));
+            if (i % 5 == 3) contact.setEmail(firstList.get(i));
+            if (i % 5 == 4) contact.setDescription(firstList.get(i));
+            if (i % 5 == 4) contactArrayList.add(contact);
+            i++;
+        }
 
         return contactArrayList;
         }
