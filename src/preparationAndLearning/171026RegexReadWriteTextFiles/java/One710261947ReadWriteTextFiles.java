@@ -21,8 +21,6 @@ public class One710261947ReadWriteTextFiles {
             System.out.println(e);
         }
         ArrayList<Contact> contactArrayList=ConstructContactListFromRecord(firstList);
-        System.out.println(contactArrayList.get(2).getName());
-        System.out.println(contactArrayList.size());
         for (Contact c: contactArrayList)
         {
             System.out.println(c.getIndex()+" "+c.getName()+" "+c.getEmail()+" "+c.getDescription());
@@ -32,11 +30,19 @@ public class One710261947ReadWriteTextFiles {
                 /*"E:\\UEL2017_18\\CN7021AdvancedSoftwareEngineering\\CN7021CourseworkAdvancedSoftwareEngineeringCoursework\\src" +
                         "\\preparationAndLearning\\171026RegexReadWriteTextFiles\\java\\gorilla.txt");*/
                 "gorilla1.txt");
-        List<String> data = firstList;//new ArrayList(Arrays.asList("This example is similar to the file copy example".split(" ")));
+        //List<String> data = firstList;//new ArrayList(Arrays.asList("This example is similar to the file copy example".split(" ")));
         try (BufferedWriter writer = Files.newBufferedWriter(path1,
                 Charset.forName("UTF-16"))) {
-            for(String s: data){
-                writer.write(s);
+            for(Contact c: contactArrayList){
+                writer.write(c.getIndex());
+                writer.newLine();
+                writer.write(c.getName());
+                writer.newLine();
+                writer.write(c.getTel());
+                writer.newLine();
+                writer.write(c.getEmail());
+                writer.newLine();
+                writer.write(c.getDescription());
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -51,16 +57,14 @@ public class One710261947ReadWriteTextFiles {
 
     static ArrayList<Contact> ConstructContactListFromRecord(ArrayList<String> firstList) {
         ArrayList<Contact> contactArrayList = new ArrayList<>();
-        Contact contact = new Contact();
-        int i=0;
-        while(i<firstList.size()){
-            if (i % 5 == 0) contact.setIndex(firstList.get(i));
-            if (i % 5 == 1) contact.setName(firstList.get(i));
-            if (i % 5 == 2) contact.setTel(firstList.get(i));
-            if (i % 5 == 3) contact.setEmail(firstList.get(i));
-            if (i % 5 == 4) contact.setDescription(firstList.get(i));
-            if (i % 5 == 4) contactArrayList.add(contact);
-            i++;
+        //Contact contact = new Contact();
+        for(int i=0; i<firstList.size();i++) {
+            if (i % 5 == 0) contactArrayList.add(new Contact());
+            if (i % 5 == 0) contactArrayList.get(i / 5).setIndex(firstList.get(i));
+            if (i % 5 == 1) contactArrayList.get(i / 5).setName(firstList.get(i));
+            if (i % 5 == 2) contactArrayList.get(i / 5).setTel(firstList.get(i));
+            if (i % 5 == 3) contactArrayList.get(i / 5).setEmail(firstList.get(i));
+            if (i % 5 == 4) contactArrayList.get(i / 5).setDescription(firstList.get(i));
         }
 
         return contactArrayList;

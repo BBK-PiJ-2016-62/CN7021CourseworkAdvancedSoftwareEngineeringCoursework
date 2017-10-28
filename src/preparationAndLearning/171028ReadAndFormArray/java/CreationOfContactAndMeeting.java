@@ -15,18 +15,18 @@ public class CreationOfContactAndMeeting{
         System.out.println("Please type the number of the tasks listed below you want to perform and then press return.\n" +
                 "1: Record new contact(s).");
         int numberSelected = Integer.parseInt(console.readLine());
-        CreationOfContactAndMeeting creationOfContactAndMeeting = new CreationOfContactAndMeeting();
-        creationOfContactAndMeeting.entries (numberSelected);
-        System.out.println(contactList.get(2).getDescription());
+        //CreationOfContactAndMeeting creationOfContactAndMeeting = new CreationOfContactAndMeeting();
+        /*creationOfContactAndMeeting.*/entries (numberSelected);
+        System.out.println(contactList.get(0).getDescription()+" "+contactList.get(0).getIndex());
     }
 
     static ArrayList<Contact> contactList=new ArrayList<>();
 
-    Contact creatNewContact(){
+    static Contact creatNewContact(){
 
         Contact contact = new Contact();
         Console console = System.console();
-        System.out.println("Enter contact's name\n(Surname first. Only alphabets and spaces allowed. Examples Mandela Nelson Rolihlahla, Kim Dae-jung");
+        System.out.println("Enter contact's name\n(Surname first. Only alphabets and spaces allowed. Examples Mandela Nelson Rolihlahla, Kim Dae-jung)");
         String contactName = console.readLine();
         contact.setName(contactName);
         contact.setIndex(produceContactIndex(contactName));
@@ -39,7 +39,7 @@ public class CreationOfContactAndMeeting{
 
         return contact;
     }
-    String produceContactIndex (String nameString)
+    static String produceContactIndex (String nameString)
     {
         DateTimeFormatter f = DateTimeFormatter.ofPattern("yyMMddHHmm");
         LocalDateTime ldtNow = LocalDateTime.now();
@@ -54,11 +54,11 @@ public class CreationOfContactAndMeeting{
         String namePartOfTheIndex = nameInArray[0].substring(0,5).toLowerCase()+nameInArray[1].substring(0,2).toLowerCase();
         return namePartOfTheIndex+dateTimeNowString;
     }
-    void constructContactList (Contact contact){
+    static void constructContactList (Contact contact){
 
         contactList.add(contact);
     }
-    void entries (int i){
+    static void entries (int i){
 
         if(i==1){
             while(true){
