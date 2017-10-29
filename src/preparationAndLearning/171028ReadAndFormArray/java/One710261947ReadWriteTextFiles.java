@@ -73,7 +73,7 @@ public class One710261947ReadWriteTextFiles {
 
         ArrayList<String> firstList = new ArrayList();
 
-        Path path = Paths.get("E:\\UEL2017_18\\CN7021AdvancedSoftwareEngineering\\CN7021CourseworkAdvancedSoftwareEngineeringCoursework\\src\\preparationAndLearning\\171026RegexReadWriteTextFiles\\java\\1710281553_4ContactData.txt");
+        Path path = Paths.get("1710281553_4ContactData.txt");
         try { Files.lines(path).forEach(s->firstList.add(s));
         } catch (IOException e) {
             System.out.println(e);
