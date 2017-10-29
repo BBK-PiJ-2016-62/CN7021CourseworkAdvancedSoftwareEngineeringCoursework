@@ -12,15 +12,33 @@ public class CreationOfContactAndMeeting{
     public static void main(String[] args){
 
         Console console = System.console();
+        ArrayList<Contact> contactList=new ArrayList<>();
         System.out.println("Please type the number of the tasks listed below you want to perform and then press return.\n" +
                 "1: Record new contact(s).");
         int numberSelected = Integer.parseInt(console.readLine());
         //CreationOfContactAndMeeting creationOfContactAndMeeting = new CreationOfContactAndMeeting();
-        /*creationOfContactAndMeeting.*/entries (numberSelected);
-        System.out.println(contactList.get(0).getDescription()+" "+contactList.get(0).getIndex());
+        /*creationOfContactAndMeeting.*/
+        if(numberSelected==1)  contactList= extendContactList();
+        //temp for checking
+        System.out.println(contactList.get(0).getIndex()+" "+contactList.get(0).getName()+" "+contactList.get(0).getTel()+" "+contactList.get(0).getEmail()+contactList.get(0).getDescription());
+        One710261947ReadWriteTextFiles.WritingBackContactListToRecord(contactList);
     }
 
-    static ArrayList<Contact> contactList=new ArrayList<>();
+    static ArrayList<Contact> extendContactList (){
+
+        ArrayList<Contact> contactList= One710261947ReadWriteTextFiles.ConstructContactListFromRecord();
+        while(true){
+            contactList.add(creatNewContact());
+            System.out.println("Any new entry? (Y/N)");
+            Console console = System.console();
+            String entry=console.readLine();
+            if(entry.equals("Y")) continue;
+            if(entry.equals("N")) break;
+        }
+        return contactList;
+    }
+
+    //static ArrayList<Contact> contactList= new ArrayList<>();
 
     static Contact creatNewContact(){
 
@@ -36,6 +54,7 @@ public class CreationOfContactAndMeeting{
         contact.setEmail(console.readLine());
         System.out.println("Enter a brief description of the contact(not exceeding 100 words)");
         contact.setDescription(console.readLine());
+        contact.setMeetings(new ArrayList<String>(Arrays.asList("00000000000000")));
 
         return contact;
     }
@@ -54,21 +73,8 @@ public class CreationOfContactAndMeeting{
         String namePartOfTheIndex = nameInArray[0].substring(0,5).toLowerCase()+nameInArray[1].substring(0,2).toLowerCase();
         return namePartOfTheIndex+dateTimeNowString;
     }
-    static void constructContactList (Contact contact){
+    /*static void constructContactList (Contact contact){
 
         contactList.add(contact);
-    }
-    static void entries (int i){
-
-        if(i==1){
-            while(true){
-                constructContactList(creatNewContact());
-                System.out.println("Any new entry? (Y/N)");
-                Console console = System.console();
-                String entry=console.readLine();
-                if(entry.equals("Y")) continue;
-                if(entry.equals("N")) break;
-            }
-        }
-    }
+    }*/ //this method can be deleted
 }
