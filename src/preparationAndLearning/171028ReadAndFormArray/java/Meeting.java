@@ -14,7 +14,7 @@ public class Meeting {
 
     public void setMeetingStartDateTime(String meetingStartDateTime) {this.meetingStartDateTime = meetingStartDateTime;}
     public void setMeetingEndTime(String meetingEndTime) {this.meetingEndTime = meetingEndTime;}
-    public void setMeetingIndex(String meetingEndTime) {this.meetingIndex = meetingIndex;}
+    public void setMeetingIndex(String meetingIndex) {this.meetingIndex = meetingIndex;}
     public void setMeetingVenue(String meetingVenue) {this.meetingVenue = meetingVenue;}
     public void setMeetingDescription(String meetingDescription) {this.meetingDescription = meetingDescription;}
     public void setMeetingparticipant(String meetingparticipant) {this.meetingParticipants.add(meetingparticipant);}
