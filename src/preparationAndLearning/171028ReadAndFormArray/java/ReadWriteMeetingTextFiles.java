@@ -23,7 +23,7 @@ public class ReadWriteMeetingTextFiles {
 
     public static void WritingBackMeetingListToRecord(ArrayList<Meeting> meetingArrayList) {
 
-        Path path = Paths.get("gorilla2.txt");
+        Path path = Paths.get("MeetingList.txt");
 
         try (BufferedWriter writer = Files.newBufferedWriter(path,
                 Charset.forName("UTF-16"))) {
@@ -74,7 +74,7 @@ public class ReadWriteMeetingTextFiles {
                 meetingArrayList.get(i/6).setMeetingParticipants(new ArrayList<String>(Arrays.asList(firstListArray)));}
         }
         //temp for checking
-        for (Meeting m: meetingArrayList)
+        /*for (Meeting m: meetingArrayList)
         {
             System.out.println(m.getMeetingIndex()+" "+m.getMeetingStartDateTime()+" "
                     +m.getMeetingEndTime()+" "+m.getMeetingVenue()+" "
@@ -82,7 +82,7 @@ public class ReadWriteMeetingTextFiles {
                     +m.getMeetingParticipants().toString()
                                                     .replace("[","")
                                                     .replace("]",""));
-        }
+        }*/
 
         return meetingArrayList;
     }

@@ -34,8 +34,8 @@ public class CreationAndAdditionOfContacts{
         while(true){
             contactList.add(creatNewContact());
             System.out.println("Any new entry? (Y/N)");
-            Console console = System.console();
-            String entry=console.readLine();
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String entry=br.readLine();
             if(entry.equals("Y")) continue;
             if(entry.equals("N")) break;
         }
@@ -73,7 +73,7 @@ public class CreationAndAdditionOfContacts{
         if (nameInArray[0].length()==3) nameInArray[0]=nameInArray[0]+"aa";
         if (nameInArray[0].length()==4) nameInArray[0]=nameInArray[0]+"a";
         if (nameInArray[1].length()==1) nameInArray[1]=nameInArray[1]+"a";
-        System.out.println(Arrays.toString(nameInArray));  //temp
+        //System.out.println(Arrays.toString(nameInArray));  //temp
         String namePartOfTheIndex = nameInArray[0].substring(0,5).toLowerCase()+nameInArray[1].substring(0,2).toLowerCase();
         return namePartOfTheIndex+dateTimeNowString;
     }

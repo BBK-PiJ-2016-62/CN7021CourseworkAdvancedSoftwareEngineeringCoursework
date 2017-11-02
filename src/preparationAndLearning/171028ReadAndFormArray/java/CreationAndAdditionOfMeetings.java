@@ -20,7 +20,7 @@ public class CreationAndAdditionOfMeetings {
         //CreationOfContactAndMeeting creationOfContactAndMeeting = new CreationOfContactAndMeeting();
         /*creationOfContactAndMeeting.*/
         if(numberSelected==2)  meetingList= extendMeetingList();
-        for (Meeting m: meetingList)
+        /*for (Meeting m: meetingList)
         {
             System.out.println(m.getMeetingIndex());
             System.out.println(m.getMeetingStartDateTime());
@@ -32,7 +32,7 @@ public class CreationAndAdditionOfMeetings {
                                                             .replace("]","")
                                                             .trim());
 
-        }
+        }*/
         ReadWriteMeetingTextFiles.WritingBackMeetingListToRecord(meetingList);
     }
 
@@ -54,7 +54,6 @@ public class CreationAndAdditionOfMeetings {
 
         Meeting meeting = new Meeting();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        //InputStreamReader console = new InputStreamReader(System.in);
         System.out.println("Enter the date and the starting time of the meeting\n(Format: yy/MM/dd/HH/mm. Example: 18/04/16/16/00)");
         String meetingStartDateTime = br.readLine();
         meeting.setMeetingStartDateTime(meetingStartDateTime);
@@ -66,9 +65,19 @@ public class CreationAndAdditionOfMeetings {
         meeting.setMeetingVenue(br.readLine());
         System.out.println("Enter a brief description of the meeting(not exceeding 100 words)");
         meeting.setMeetingDescription(br.readLine());
-        System.out.println("Enter participants of the meeting\n(Surname First. Separating each name with a slash. Example:\n" +
-                "(May Boris/Corbyn Treresa/Johnson Jeremy)");
-        meeting.setMeetingParticipants(setMeetingParticipants(br.readLine()));
+        //System.out.println("Enter participants of the meeting\n(Surname First. Separating each name with a slash. Example:\n" +
+       //         "(May Boris/Corbyn Treresa/Johnson Jeremy)");
+        System.out.println("Enter participants of the meeting one by one");
+        meeting.setMeetingParticipants(new ArrayList<String>());//(setMeetingParticipants(br.readLine()));
+        do {
+            System.out.println("Enter participant name. If no more participants, Type N\n(Surname First. Example: May Boris)");
+            String meetingparticipant= br.readLine();
+            if (meetingparticipant.equals("N"))break;
+            else {
+                One710301355CheckingExistenceAndCreationOfContact.checkWhetherNameAlreadyInContactList(meetingparticipant);
+            }
+            meeting.setMeetingparticipant(meetingparticipant);
+        }while(true);
         //meeting.setMeetings(new ArrayList<String>(Arrays.asList("00000000000000")));
 
         return meeting;

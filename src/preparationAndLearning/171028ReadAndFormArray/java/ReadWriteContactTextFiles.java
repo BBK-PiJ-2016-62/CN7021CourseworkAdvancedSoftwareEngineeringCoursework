@@ -23,7 +23,7 @@ public class ReadWriteContactTextFiles {
 
     public static void WritingBackContactListToRecord(ArrayList<Contact> contactArrayList) {
 
-        Path path1 = Paths.get("gorilla1.txt");
+        Path path1 = Paths.get("ContactListOutput.txt");
         //List<String> data = firstList;//new ArrayList(Arrays.asList("This example is similar to the file copy example".split(" ")));
         try (BufferedWriter writer = Files.newBufferedWriter(path1,
                 Charset.forName("UTF-16"))) {
@@ -75,10 +75,10 @@ public class ReadWriteContactTextFiles {
                 contactArrayList.get(i/6).setMeetings(new ArrayList<String>(Arrays.asList(firstListArray)));}
         }
         //temp for checking
-        for (Contact c: contactArrayList)
+        /*for (Contact c: contactArrayList)
         {
             System.out.println(c.getIndex()+" "+c.getName()+" "+c.getEmail()+" "+c.getDescription());
-        }
+        }*/
 
         return contactArrayList;
     }
